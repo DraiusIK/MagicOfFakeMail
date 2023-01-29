@@ -19,8 +19,8 @@ int main(int argc, char *argv[]){
     struct hostent *host; // variável host
     struct sockaddr_in alvo; // variável alvo
 
-    if(argc < 4){ // Checa se há menos de 4 parâmetros
-        printf("Envia Mails!\n\n"); // Mensagem de erro
+    if(argc < 4){ // Há menos de 4 parâmetros
+        printf("Envia Mails!\n\n"); // Mensagem
         printf("Uso: %s [host_alvo] [usuario_alvo] [rementente_forjado]\n\n",argv[0]);
         exit(ERROR); // Sai do programa caso haja erro
     }
