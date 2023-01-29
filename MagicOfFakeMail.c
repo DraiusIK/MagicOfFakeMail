@@ -15,19 +15,19 @@ int Mensagem(int Socket);
 
 int main(int argc, char *argv[]){
     char Recv[1024], Send[1024]; // variáveis para receber e enviar
-    int Socket, R; // variável Socket e R
+    int Socket, R;
     struct hostent *host; // variável host
     struct sockaddr_in alvo; // variável alvo
 
     if(argc < 4){ // Checa se há menos de 4 parâmetros
         printf("Envia Mails!\n\n"); // Mensagem de erro
-        printf("Uso: %s [host_alvo] [usuario_alvo] [rementente_forjado]\n\n",argv[0]); //Mensagem de erro
+        printf("Uso: %s [host_alvo] [usuario_alvo] [rementente_forjado]\n\n",argv[0]);
         exit(ERROR); // Sai do programa caso haja erro
     }
 
     host = gethostbyname(argv[1]); // vereficiar o host
-    if(host == NULL){ // checar se o host tem valor
-        fprintf(stderr,"Host Desconhecido!\n"); // mensagem de erro
+    if(host == NULL){
+        fprintf(stderr,"Host Desconhecido!\n");
         exit(ERROR); // sair do programa caso haja erro
     }
 
@@ -37,14 +37,14 @@ int main(int argc, char *argv[]){
     bzero(&(alvo.sin_zero), 8);
 
     Socket = socket(AF_INET, SOCK_STREAM,0); // criar o socket
-    if(Socket < 0){ // verificar se o socket tem valor
-        perror("Socket"); // Mensagem de erro
+    if(Socket < 0){
+        perror("Socket");
         exit(ERROR); // sair do programa
     }
 
     if(connect(Socket,(struct sockaddr * )& alvo, sizeof(struct sockaddr)) == ERROR){ // conectar ao socket
-        perror("Connect"); // mensagem de erro
-        exit(ERROR); // sair do programa
+        perror("Connect");
+        exit(ERROR);
     }
 
     R = recv(Socket, Recv, sizeof(Recv), 0);
