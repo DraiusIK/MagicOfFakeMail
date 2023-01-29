@@ -60,7 +60,8 @@ int main(int argc, char *argv[]){
     sprintf(Send, "MAIL FROM: <%s>\r\n", argv[3]);
     send(Socket, Send, strlen(Send), 0);
     R = recv(Socket, Recv, sizeof(Recv), 0);
-    Recv[R] = '\0'; printf("%s", Recv);
+    Recv[R] = '\0';
+    printf("%s", Recv);
 
     sprintf(Send, "RCPT TO: <%s>\r\n", argv[2]);
     send(Socket, Send, strlen(Send), 0);
